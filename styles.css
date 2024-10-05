@@ -1,11 +1,11 @@
-/* Prashant pandey, class 9, section"C",*/
+/* build by Prashant Pandey, class-9 , section-"C" :  Mit school*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body style for exam*/
+/* Body styling with enhanced animated gradient background */
 body {
     font-family: 'Arial', sans-serif;
     height: 100vh;
@@ -57,14 +57,7 @@ h1 {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Strong tag with continuous underline animation */
-strong {
-    font-size: 1.2em;
-    color: #333;
-    margin: 15px 0;
-    position: relative;
-}
-
+/* Sequential underline animation for multiple spans */
 .a {
     position: relative;
     display: inline-block;
@@ -78,16 +71,51 @@ strong {
     background-color: #007BFF;
     bottom: -5px;
     left: 0;
-    animation: underlineAnimation 4s infinite ease-in-out;
+    animation: underlineSequence 8s infinite ease-in-out;
+    opacity: 0;
 }
 
-@keyframes underlineAnimation {
+/* Define the timing of each line animation */
+.a:nth-child(1)::before {
+    animation-delay: 0s;
+}
+
+.a:nth-child(2)::before {
+    animation-delay: 2s;
+}
+
+.a:nth-child(3)::before {
+    animation-delay: 4s;
+}
+
+.a:nth-child(4)::before {
+    animation-delay: 6s;
+}
+
+/* Underline animation - width grows and fades in/out */
+@keyframes underlineSequence {
     0%, 100% {
         width: 0%;
+        opacity: 0;
     }
-    50% {
+    25%, 75% {
         width: 100%;
+        opacity: 1;
     }
+}
+
+/* Extra animations to enhance appearance */
+strong {
+    font-size: 1.2em;
+    color: #333;
+    margin: 15px 0;
+    position: relative;
+    animation: fadeInText 8s infinite ease-in-out;
+}
+
+@keyframes fadeInText {
+    0%, 100% { opacity: 0; }
+    25%, 75% { opacity: 1; }
 }
 
 /* Responsive design for mobile */
