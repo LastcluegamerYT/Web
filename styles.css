@@ -26,21 +26,20 @@ body {
 
 /* Content box with shadow, animations, and interactive elements */
 .content {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
     max-width: 600px;
     text-align: center;
     transform: scale(0.95);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: float 6s ease-in-out infinite;
 }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
+/* Hover effect on the content box */
+.content:hover {
+    transform: scale(1.02); /* Slight enlargement on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Enhance shadow */
 }
 
 /* Heading style with animation */
@@ -57,27 +56,47 @@ h1 {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Strong text with animated underline effect */
+/* Strong text styling with a unique animated underline */
 strong {
     display: block;
     font-size: 1.2em;
     color: #333;
     margin: 10px 0;
     position: relative;
+    transition: color 0.3s ease;
 }
 
-/* Automatic underline animation */
-.a {
-    display: inline-block;
-    position: relative;
+strong::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #007BFF;
+    transition: width 0.4s ease;
+}
+
+/* Animated underline on hover */
+strong:hover {
     color: #007BFF;
-    animation: underlineAnimate 3s ease-in-out infinite;
 }
 
-@keyframes underlineAnimate {
-    0% { border-bottom: 1px dotted transparent; }
-    50% { border-bottom: 1px dotted #007BFF; }
-    100% { border-bottom: 1px dotted transparent; }
+strong:hover::after {
+    width: 100%;
+}
+
+/* Styling for the blue underline under information */
+.a {
+    border-bottom: 1px dotted #007BFF;
+    color: #007BFF;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Interactive effect on hover */
+.a:hover {
+    color: #0056b3;
+    border-bottom: 1px solid #0056b3;
 }
 
 /* Responsive design for mobile devices */
