@@ -1,5 +1,5 @@
 /* build by Prashant Pandey, class-9 , section-"C" :  Mit school*/
-/* Universal reset */
+/* Universal reset for consistent rendering across browsers */
 * {
     margin: 0;
     padding: 0;
@@ -15,91 +15,72 @@ body {
     align-items: center;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     background-size: 400% 400%;
-    animation: backgroundAnimation 20s ease infinite;
+    animation: gradientBackground 15s ease infinite;
 }
 
-@keyframes backgroundAnimation {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Content box styling */
+/* Content box with shadow, animations, and interactive elements */
 .content {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     max-width: 600px;
     text-align: center;
-    animation: float 6s ease-in-out infinite; /* Floating animation for the box */
+    transform: scale(0.95);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
 }
 
-/* Heading styling */
+/* Heading style with animation */
 h1 {
     font-size: 2.5em;
     color: #007BFF;
     margin-bottom: 20px;
-    animation: slideIn 1.2s ease-out; /* Sliding animation for heading */
+    position: relative;
+    animation: slideIn 1.2s ease-out forwards;
 }
 
 @keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Strong tag for labels */
+/* Strong text with animated underline effect */
 strong {
+    display: block;
     font-size: 1.2em;
     color: #333;
-    margin: 15px 0;
+    margin: 10px 0;
     position: relative;
 }
 
-/* Underline animation for each label */
+/* Automatic underline animation */
 .a {
-    position: relative;
     display: inline-block;
+    position: relative;
+    color: #007BFF;
+    animation: underlineAnimate 3s ease-in-out infinite;
 }
 
-/* Automatically animating the underline */
-.a::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #007BFF;
-    bottom: -5px;
-    left: 0;
-    animation: underlineCycle 2s infinite ease-in-out;
+@keyframes underlineAnimate {
+    0% { border-bottom: 1px dotted transparent; }
+    50% { border-bottom: 1px dotted #007BFF; }
+    100% { border-bottom: 1px dotted transparent; }
 }
 
-/* Animation keyframes for underline */
-@keyframes underlineCycle {
-    0%, 100% {
-        width: 0%;
-    }
-    50% {
-        width: 100%;
-    }
-}
-
-/* Delay each label's underline animation to create a continuous flow */
-.a:nth-child(1)::before { animation-delay: 0s; }
-.a:nth-child(2)::before { animation-delay: 0.5s; }
-.a:nth-child(3)::before { animation-delay: 1s; }
-.a:nth-child(4)::before { animation-delay: 1.5s; }
-
-/* Responsive adjustments for mobile devices */
+/* Responsive design for mobile devices */
 @media (max-width: 600px) {
     .content {
         padding: 30px;
