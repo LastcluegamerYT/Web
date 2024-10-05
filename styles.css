@@ -1,11 +1,57 @@
-        body {
-            background-color: #cce7ff;
-            padding: 20px;
-        }
-        .content {
-            border: 2px solid black;
-            padding: 20px;
-            background-color: white;
-        }
-        .a { border-bottom: 1px dotted; }
-        .b { text-decoration: underline; }
+/* Resetting some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes padding and border part of element's total width and height */
+}
+
+body {
+    background: #e9f3fa; /* Soft light blue background */
+    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+}
+
+.content {
+    border: 2px solid #333; /* Darker border for contrast */
+    padding: 30px; /* Increased padding for a more spacious feel */
+    background: #fff; /* White background for the content */
+    max-width: 600px; /* Maximum width for content */
+    margin: 20px auto; /* Center content horizontally with margin */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.content:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover for interactivity */
+}
+
+h1 {
+    color: #333; /* Dark color for the heading */
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+strong {
+    color: #555; /* Slightly lighter color for strong text */
+}
+
+.a {
+    border-bottom: 1px dotted #007BFF; /* Dotted underline with a color */
+    color: #007BFF; /* Color of the text */
+}
+
+.b {
+    text-decoration: underline; /* Underline effect for the heading */
+    color: #007BFF; /* Blue color for the heading */
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 1.5em; /* Responsive font size for the heading */
+    }
+}
