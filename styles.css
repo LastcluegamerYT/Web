@@ -1,11 +1,12 @@
 /* build by Prashant Pandey, class-9 , section-"C" :  Mit school*/
+/* Universal reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling with enhanced animated gradient background */
+/* Body styling with animated gradient background */
 body {
     font-family: 'Arial', sans-serif;
     height: 100vh;
@@ -13,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    background-size: 300% 300%;
+    background-size: 400% 400%;
     animation: backgroundAnimation 20s ease infinite;
 }
 
@@ -23,18 +24,17 @@ body {
     100% { background-position: 0% 0%; }
 }
 
-/* Content box styling with shadow and smooth animation */
+/* Content box styling */
 .content {
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    background: rgba(255, 255, 255, 0.9);
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     max-width: 600px;
     text-align: center;
-    animation: float 8s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite; /* Floating animation for the box */
 }
 
-/* Floating animation for the content box */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -49,7 +49,7 @@ h1 {
     font-size: 2.5em;
     color: #007BFF;
     margin-bottom: 20px;
-    animation: slideIn 1.2s ease-out;
+    animation: slideIn 1.2s ease-out; /* Sliding animation for heading */
 }
 
 @keyframes slideIn {
@@ -57,12 +57,21 @@ h1 {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Sequential underline animation for multiple spans */
+/* Strong tag for labels */
+strong {
+    font-size: 1.2em;
+    color: #333;
+    margin: 15px 0;
+    position: relative;
+}
+
+/* Underline animation for each label */
 .a {
     position: relative;
     display: inline-block;
 }
 
+/* Automatically animating the underline */
 .a::before {
     content: '';
     position: absolute;
@@ -71,54 +80,26 @@ h1 {
     background-color: #007BFF;
     bottom: -5px;
     left: 0;
-    animation: underlineSequence 8s infinite ease-in-out;
-    opacity: 0;
+    animation: underlineCycle 2s infinite ease-in-out;
 }
 
-/* Define the timing of each line animation */
-.a:nth-child(1)::before {
-    animation-delay: 0s;
-}
-
-.a:nth-child(2)::before {
-    animation-delay: 2s;
-}
-
-.a:nth-child(3)::before {
-    animation-delay: 4s;
-}
-
-.a:nth-child(4)::before {
-    animation-delay: 6s;
-}
-
-/* Underline animation - width grows and fades in/out */
-@keyframes underlineSequence {
+/* Animation keyframes for underline */
+@keyframes underlineCycle {
     0%, 100% {
         width: 0%;
-        opacity: 0;
     }
-    25%, 75% {
+    50% {
         width: 100%;
-        opacity: 1;
     }
 }
 
-/* Extra animations to enhance appearance */
-strong {
-    font-size: 1.2em;
-    color: #333;
-    margin: 15px 0;
-    position: relative;
-    animation: fadeInText 8s infinite ease-in-out;
-}
+/* Delay each label's underline animation to create a continuous flow */
+.a:nth-child(1)::before { animation-delay: 0s; }
+.a:nth-child(2)::before { animation-delay: 0.5s; }
+.a:nth-child(3)::before { animation-delay: 1s; }
+.a:nth-child(4)::before { animation-delay: 1.5s; }
 
-@keyframes fadeInText {
-    0%, 100% { opacity: 0; }
-    25%, 75% { opacity: 1; }
-}
-
-/* Responsive design for mobile */
+/* Responsive adjustments for mobile devices */
 @media (max-width: 600px) {
     .content {
         padding: 30px;
