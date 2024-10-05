@@ -6,9 +6,15 @@
 }
 
 body {
-    background: #e9f3fa; /* Soft light blue background */
+    background: linear-gradient(135deg, #cce7ff 0%, #e9f3fa 100%); /* Gradient background for depth */
     padding: 20px;
     font-family: 'Arial', sans-serif; /* Clean and modern font */
+    animation: backgroundAnimation 10s infinite alternate; /* Continuous background animation */
+}
+
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(135deg, #cce7ff 0%, #e9f3fa 100%); }
+    100% { background: linear-gradient(135deg, #a7d3f2 0%, #e1eff6 100%); } /* Shift the gradient color */
 }
 
 .content {
@@ -17,19 +23,21 @@ body {
     background: #fff; /* White background for the content */
     max-width: 600px; /* Maximum width for content */
     margin: 20px auto; /* Center content horizontally with margin */
-    border-radius: 8px; /* Rounded corners for a modern look */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
-    transition: transform 0.2s; /* Smooth hover effect */
+    border-radius: 12px; /* Rounded corners for a modern look */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
 }
 
 .content:hover {
-    transform: scale(1.02); /* Slightly enlarge on hover for interactivity */
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
 }
 
 h1 {
     color: #333; /* Dark color for the heading */
     text-align: center; /* Center the heading */
     margin-bottom: 20px; /* Space below the heading */
+    font-size: 2.5em; /* Larger heading */
 }
 
 strong {
@@ -46,12 +54,17 @@ strong {
     color: #007BFF; /* Blue color for the heading */
 }
 
+p {
+    line-height: 1.5; /* Added space between lines */
+    margin-bottom: 15px; /* Space below each line */
+}
+
 @media (max-width: 600px) {
     .content {
         padding: 20px; /* Reduce padding on smaller screens */
     }
 
     h1 {
-        font-size: 1.5em; /* Responsive font size for the heading */
+        font-size: 1.8em; /* Responsive font size for the heading */
     }
 }
