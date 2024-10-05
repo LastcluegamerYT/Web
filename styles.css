@@ -1,70 +1,115 @@
-/* Resetting some default styles */
+/* Universal reset for consistent rendering across browsers */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Makes padding and border part of element's total width and height */
+    box-sizing: border-box;
 }
 
+/* Body styling with animated gradient background */
 body {
-    background: linear-gradient(135deg, #cce7ff 0%, #e9f3fa 100%); /* Gradient background for depth */
-    padding: 20px;
-    font-family: 'Arial', sans-serif; /* Clean and modern font */
-    animation: backgroundAnimation 10s infinite alternate; /* Continuous background animation */
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
 }
 
-@keyframes backgroundAnimation {
-    0% { background: linear-gradient(135deg, #cce7ff 0%, #e9f3fa 100%); }
-    100% { background: linear-gradient(135deg, #a7d3f2 0%, #e1eff6 100%); } /* Shift the gradient color */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
+/* Content box with shadow, animations, and interactive elements */
 .content {
-    border: 2px solid #333; /* Darker border for contrast */
-    padding: 30px; /* Increased padding for a more spacious feel */
-    background: #fff; /* White background for the content */
-    max-width: 600px; /* Maximum width for content */
-    margin: 20px auto; /* Center content horizontally with margin */
-    border-radius: 12px; /* Rounded corners for a modern look */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
+    max-width: 600px;
+    text-align: center;
+    transform: scale(0.95);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect on the content box */
 .content:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    transform: scale(1.02); /* Slight enlargement on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Enhance shadow */
 }
 
+/* Heading style with animation */
 h1 {
-    color: #333; /* Dark color for the heading */
-    text-align: center; /* Center the heading */
-    margin-bottom: 20px; /* Space below the heading */
-    font-size: 2.5em; /* Larger heading */
+    font-size: 2.5em;
+    color: #007BFF;
+    margin-bottom: 20px;
+    position: relative;
+    animation: slideIn 1.2s ease-out forwards;
 }
 
+@keyframes slideIn {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Strong text styling with a unique animated underline */
 strong {
-    color: #555; /* Slightly lighter color for strong text */
+    display: block;
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
+strong::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #007BFF;
+    transition: width 0.4s ease;
+}
+
+/* Animated underline on hover */
+strong:hover {
+    color: #007BFF;
+}
+
+strong:hover::after {
+    width: 100%;
+}
+
+/* Styling for the blue underline under information */
 .a {
-    border-bottom: 1px dotted #007BFF; /* Dotted underline with a color */
-    color: #007BFF; /* Color of the text */
+    border-bottom: 1px dotted #007BFF;
+    color: #007BFF;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
-.b {
-    text-decoration: underline; /* Underline effect for the heading */
-    color: #007BFF; /* Blue color for the heading */
+/* Interactive effect on hover */
+.a:hover {
+    color: #0056b3;
+    border-bottom: 1px solid #0056b3;
 }
 
-p {
-    line-height: 1.5; /* Added space between lines */
-    margin-bottom: 15px; /* Space below each line */
-}
-
+/* Responsive design for mobile devices */
 @media (max-width: 600px) {
     .content {
-        padding: 20px; /* Reduce padding on smaller screens */
+        padding: 30px;
+        max-width: 90%;
     }
 
     h1 {
-        font-size: 1.8em; /* Responsive font size for the heading */
+        font-size: 2em;
+    }
+
+    strong {
+        font-size: 1em;
     }
 }
